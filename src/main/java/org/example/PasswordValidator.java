@@ -1,5 +1,6 @@
 package org.example;
 
+
 /*
 Method to Check Minimum Length
 Name: validateMinimumLength
@@ -30,8 +31,37 @@ Description: This method compares the provided password against a predefined lis
  */
 public class PasswordValidator {
     public static void main(String[] args) {
+    }
 
+    public static boolean validateMinimumLength(String password) {
+        return password != null && password.length() >= 8;
+    }
+
+    public static boolean containsDigits(String password) {
+        return password.matches(".*\\d.*");
+        //The regular expression .*\\d.* is used here, where \\d represents any digit,
+        // and .* means any number of characters before and after the digit.
+    }
+
+    public static boolean hasMixedCase(String password) {
+        return password.matches("(?=.*[a-z])(?=.*[A-Z]).+");
     }
 
 
+    private static final String[] COMMON_PASSWORDS = {
+            "Password1", "123456", "password", "12345678", "qwerty", "qwertz",
+            "123456789", "12345", "0123456789", "1234567890", "passwort", "Passwort", "passwort123"};
+
+    public static boolean isCommonPassword(String password) {
+        for (String commonPassword : COMMON_PASSWORDS) {
+            if (commonPassword.equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containsSpecialCharacters(String password) {
+        return password.matches(".*[^a-zA-Z0-9].*");
+    }
 }
