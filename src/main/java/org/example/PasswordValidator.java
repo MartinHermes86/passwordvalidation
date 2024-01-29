@@ -1,10 +1,8 @@
 package org.example;
 
-
-import at.favre.lib.crypto.bcrypt.BCrypt;
-
 import java.security.SecureRandom;
 import java.util.Random;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 /*
 Method to Check Minimum Length
@@ -92,7 +90,7 @@ public class PasswordValidator {
                 || !PasswordValidator.containsSpecialCharacters(generatedPassword)
                 || !PasswordValidator.hasMixedCase(generatedPassword)
                 || PasswordValidator.isCommonPassword(generatedPassword)) {
-            return generateSecurePassword(); // Recursively generate a new password if criteria not met
+            return generateSecurePassword();
         }
 
         return generatedPassword;
