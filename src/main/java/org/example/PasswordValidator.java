@@ -33,8 +33,6 @@ Description: This method compares the provided password against a predefined lis
 
  */
 public class PasswordValidator {
-    public static void main(String[] args) {
-    }
 
     public static boolean validateMinimumLength(String password) {
         return password != null && password.length() >= 8;
