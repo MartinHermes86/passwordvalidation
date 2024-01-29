@@ -1,6 +1,8 @@
 package org.example;
 
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -94,5 +96,9 @@ public class PasswordValidator {
         }
 
         return generatedPassword;
+    }
+
+    public static String hashPassword(String password) {
+        return BCrypt.withDefaults().hashToString(12, password.toCharArray());
     }
 }

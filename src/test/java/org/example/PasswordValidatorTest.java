@@ -62,4 +62,13 @@ class PasswordValidatorTest {
         assertTrue(PasswordValidator.hasMixedCase(generatedPassword), "Password should have mixed case letters");
         assertFalse(PasswordValidator.isCommonPassword(generatedPassword), "Password should not be a common password");
     }
+
+    @Test
+    void testHashPassword() {
+        String password = "securePassword123!";
+        String hashedPassword = PasswordValidator.hashPassword(password);
+
+        assertNotNull(hashedPassword, "Hashed password should not be null");
+        assertNotEquals(password, hashedPassword, "Hashed password should not be the same as the plain password");
+    }
 }
