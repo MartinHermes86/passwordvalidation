@@ -35,6 +35,7 @@ Description: This method compares the provided password against a predefined lis
 public class PasswordValidator {
 
     public static boolean validateMinimumLength(String password) {
+
         return password != null && password.length() >= 8;
     }
 
@@ -45,6 +46,7 @@ public class PasswordValidator {
     }
 
     public static boolean hasMixedCase(String password) {
+
         return password.matches("(?=.*[a-z])(?=.*[A-Z]).+");
     }
 
