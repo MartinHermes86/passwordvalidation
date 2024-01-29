@@ -52,4 +52,14 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.containsSpecialCharacters(""), "Empty password");
     }
 
+    @Test
+    void testGenerateSecurePassword() {
+        String generatedPassword = PasswordValidator.generateSecurePassword();
+
+        assertTrue(generatedPassword.length() >= 8, "Password should be at least 8 characters long");
+        assertTrue(PasswordValidator.containsDigits(generatedPassword), "Password should contain digits");
+        assertTrue(PasswordValidator.containsSpecialCharacters(generatedPassword), "Password should contain special characters");
+        assertTrue(PasswordValidator.hasMixedCase(generatedPassword), "Password should have mixed case letters");
+        assertFalse(PasswordValidator.isCommonPassword(generatedPassword), "Password should not be a common password");
+    }
 }

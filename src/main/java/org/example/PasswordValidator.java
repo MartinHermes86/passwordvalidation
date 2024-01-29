@@ -1,6 +1,9 @@
 package org.example;
 
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 /*
 Method to Check Minimum Length
 Name: validateMinimumLength
@@ -63,5 +66,33 @@ public class PasswordValidator {
 
     public static boolean containsSpecialCharacters(String password) {
         return password.matches(".*[^a-zA-Z0-9].*");
+    }
+
+    private static final String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String DIGITS = "0123456789";
+    private static final String SPECIAL_CHARS = "!@#$%^&*()-_+=<>?";
+    private static final int PASSWORD_LENGTH = 16;
+
+    public static String generateSecurePassword() {
+        String combinedChars = LOWERCASE_CHARS + UPPERCASE_CHARS + DIGITS + SPECIAL_CHARS;
+        Random random = new SecureRandom();
+        StringBuilder password = new StringBuilder(PASSWORD_LENGTH);
+
+        for (int i = 0; i < PASSWORD_LENGTH; i++) {
+            password.append(combinedChars.charAt(random.nextInt(combinedChars.length())));
+        }
+
+        String generatedPassword = password.toString();
+
+        // Ensure the generated password meets all criteria
+        if (!PasswordValidator.containsDigits(generatedPassword)
+                || !PasswordValidator.containsSpecialCharacters(generatedPassword)
+                || !PasswordValidator.hasMixedCase(generatedPassword)
+                || PasswordValidator.isCommonPassword(generatedPassword)) {
+            return generateSecurePassword(); // Recursively generate a new password if criteria not met
+        }
+
+        return generatedPassword;
     }
 }
