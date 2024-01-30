@@ -51,7 +51,6 @@ public class PasswordValidator {
         return password.matches("(?=.*[a-z])(?=.*[A-Z]).+");
     }
 
-
     public static final String[] COMMON_PASSWORDS = {
             "Password1", "123456", "password", "12345678", "qwerty", "qwertz",
             "123456789", "12345", "1234567890", "passwort", "Passwort", "passwort123"};
