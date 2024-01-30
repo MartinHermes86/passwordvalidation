@@ -51,7 +51,7 @@ public class PasswordValidator {
     }
 
 
-    private static final String[] COMMON_PASSWORDS = {
+    public static final String[] COMMON_PASSWORDS = {
             "Password1", "123456", "password", "12345678", "qwerty", "qwertz",
             "123456789", "12345", "0123456789", "1234567890", "passwort", "Passwort", "passwort123"};
 
@@ -68,11 +68,11 @@ public class PasswordValidator {
         return password.matches(".*[^a-zA-Z0-9].*");
     }
 
-    private static final String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
-    private static final String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String DIGITS = "0123456789";
-    private static final String SPECIAL_CHARS = "!@#$%^&*()-_+=<>?";
-    private static final int PASSWORD_LENGTH = 16;
+    public  static final String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
+    public  static final String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public  static final String DIGITS = "0123456789";
+    public  static final String SPECIAL_CHARS = "!@#$%^&*()-_+=<>?";
+    public  static final int PASSWORD_LENGTH = 16;
 
     public static String generateSecurePassword() {
         String combinedChars = LOWERCASE_CHARS + UPPERCASE_CHARS + DIGITS + SPECIAL_CHARS;
